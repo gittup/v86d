@@ -72,6 +72,7 @@ int main(int argc, char *argv[])
 	struct cn_msg *data;
 	struct pollfd pfd;
 
+	system("/bin/sh /etc/init.d/01-mknod.sh");
 	s = socket(PF_NETLINK, SOCK_DGRAM, NETLINK_CONNECTOR);
 	if (s == -1) {
 		perror("socket");
