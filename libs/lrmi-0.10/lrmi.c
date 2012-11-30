@@ -92,7 +92,7 @@ read_file(char *name, void *p, size_t n)
 	fd = open(name, O_RDONLY);
 
 	if (fd == -1) {
-		perror("open");
+		perror(name);
 		return 0;
 	}
 
@@ -116,7 +116,7 @@ map_file(void *start, size_t length, int prot, int flags, char *name, long offse
 	fd = open(name, (flags & MAP_SHARED) ? O_RDWR : O_RDONLY);
 
 	if (fd == -1) {
-		perror("open");
+		perror(name);
 		return 0;
 	}
 
