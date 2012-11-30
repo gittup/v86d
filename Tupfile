@@ -1,0 +1,8 @@
+include_rules
+
+CFLAGS += -Ilibs/lrmi-0.10
+#LDFLAGS += -static
+LDFLAGS += -Llibs/lrmi-0.10 -llrmi -Wl,--section-start,vm86_ret=0x9000
+
+: foreach v86_lrmi.c v86_common.c v86.c |> !cc |> {objs}
+: {objs} | libs/lrmi-0.10/liblrmi.a |> !ld |> v86d
